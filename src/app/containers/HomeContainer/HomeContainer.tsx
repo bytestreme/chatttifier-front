@@ -13,6 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import {AttachFile, EmojiEmotions, MoreHoriz, NotificationsActive, Search, Send} from "@material-ui/icons";
 import theme from "app/theme";
+import {Badge, withStyles} from "@material-ui/core";
 
 const leftSideSize = 3;
 const rightSideSize = 9;
@@ -51,18 +52,81 @@ const useStyles = makeStyles({
     },
     contactList: {
         overflowY: 'scroll',
-        height: '77vh'
+        height: '75vh'
     },
     profileSection: {
-        height: '5vh',
-        borderRight: '1px solid #e0e0e0'
+        borderRight: '1px solid #e0e0e0',
     },
     searchSection: {
-        height: '10vh',
+        height: '8vh',
         padding: '10px',
-        borderRight: '1px solid #e0e0e0'
+        borderRight: '1px solid #e0e0e0',
     }
 });
+const OfflineBadge = withStyles((_) => ({}))(Badge);
+
+const OnlineBadge = withStyles((theme) => ({
+    badge: {
+        backgroundColor: '#44b700',
+        color: '#44b700',
+        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        '&::after': {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            borderRadius: '50%',
+            animation: '$ripple 1.2s infinite ease-in-out',
+            border: '1px solid currentColor',
+            content: '""',
+        },
+    },
+    '@keyframes ripple': {
+        '0%': {
+            transform: 'scale(.8)',
+            opacity: 1,
+        },
+        '100%': {
+            transform: 'scale(2.4)',
+            opacity: 0,
+        },
+    },
+}))(Badge);
+
+function buildContactItem(id: number) {
+    return (
+        <ListItem button key={id.toString(10) + "JohnDoe"}>
+            <ListItemIcon>
+                {
+                    Math.random() >= 0.5 ?
+                        <OnlineBadge
+                            overlap="circle"
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'right',
+                            }}
+                            variant="dot"
+                        >
+                            <Avatar alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg"/>
+                        </OnlineBadge>
+                        : <OfflineBadge
+                            overlap="circle"
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'right',
+                            }}
+                            variant="dot"
+                        >
+                            <Avatar alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg"/>
+                        </OfflineBadge>
+                }
+            </ListItemIcon>
+            <ListItemText primary="John Doe">{"JohnDoe" + id.toString(10)}</ListItemText>
+            <ListItemText secondary="timestamp goes here"/>
+        </ListItem>
+    );
+}
 
 function buildMessageText(id: number) {
     return (
@@ -123,91 +187,23 @@ export default function HomeContainer() {
             </Grid>
             <Grid container className={classes.bodySection}>
                 <Grid item xs={leftSideSize}>
-                    <Grid container className={classes.profileSection}>
-                        <ListItem button key="JohnDoe14">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/1.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe"/>
-                        </ListItem>
+                    <Grid item className={classes.profileSection}>
+                        <List>
+                            <ListItem>
+                                <ListItemIcon>
+                                    <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/1.jpg"/>
+                                </ListItemIcon>
+                                <ListItemText primary="John Doe"/>
+                            </ListItem>
+                        </List>
                     </Grid>
                     <Grid container justify="center" alignItems="center" className={classes.searchSection}>
                         <InputBase fullWidth className={classes.input} placeholder="Search user"/>
                     </Grid>
                     <List className={classes.contactList}>
-                        <ListItem button key="JohnDoe13">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/1.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">John Doe</ListItemText>
-                            <ListItemText secondary="online"/>
-                        </ListItem>
-                        <ListItem button key="JohnDoe12">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/3.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">Alice</ListItemText>
-                        </ListItem>
-                        <ListItem button key="JohnDoe1">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/2.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">Cindy Baker</ListItemText>
-                        </ListItem>
-                        <ListItem button key="JohnDoe221">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/2.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">Cindy Baker</ListItemText>
-                        </ListItem>
-                        <ListItem button key="Joh123nDoe1">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/2.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">Cindy Baker</ListItemText>
-                        </ListItem>
-                        <ListItem button key="Jo321321hnDoe1">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/2.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">Cindy Baker</ListItemText>
-                        </ListItem>
-                        <ListItem button key="JohnD123213oe1">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/2.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">Cindy Baker</ListItemText>
-                        </ListItem>
-                        <ListItem button key="J5324ohnDoe1">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/2.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">Cindy Baker</ListItemText>
-                        </ListItem>
-                        <ListItem button key="321hnDoe1">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/2.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">Cindy Baker</ListItemText>
-                        </ListItem>
-                        <ListItem button key="J5324o32">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/2.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">Cindy Baker</ListItemText>
-                        </ListItem>
-                        <ListItem button key="J533212nDoe1">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/2.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">Cindy Baker</ListItemText>
-                        </ListItem>
-                        <ListItem button key="J312e1">
-                            <ListItemIcon>
-                                <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/2.jpg"/>
-                            </ListItemIcon>
-                            <ListItemText primary="John Doe">Cindy Baker</ListItemText>
-                        </ListItem>
+                        {
+                            [...Array(20)].map((_, i) => buildContactItem(i))
+                        }
                     </List>
                 </Grid>
                 <Grid item xs={rightSideSize}>

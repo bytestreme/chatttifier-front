@@ -20,7 +20,7 @@ const theme = createMuiTheme({
                     'border-radius': '50px'
                 },
                 '::-webkit-scrollbar-thumb': {
-                    'background-color': 'rgba(0, 0, 0, 0.05)',
+                    'background-color': 'rgba(0, 0, 0, 0.1)',
                     'border-radius': '50px',
                 }
             }
