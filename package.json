@@ -46,8 +46,7 @@
     "webpack-dev-server": "^3.10.3",
     "webpack-hot-middleware": "^2.25.0"
   },
-  "dependencies": {    "react-router": "^5.1.2",
-
+  "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
     "@types/react-router-dom": "^5.1.7",
