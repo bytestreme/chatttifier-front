@@ -12,15 +12,15 @@ const theme = createMuiTheme({
         MuiCssBaseline: {
             '@global': {
                 '::-webkit-scrollbar': {
-                    'width': '7px',
+                    'width': '5px',
                     'border-radius': '50px'
                 },
                 '::-webkit-scrollbar-track': {
-                    'background-color': 'rgba(0, 0, 0, 0.05)',
+                    'background-color': 'rgba(46, 52, 60, 0.2)',
                     'border-radius': '50px'
                 },
                 '::-webkit-scrollbar-thumb': {
-                    'background-color': 'rgba(0, 0, 0, 0.1)',
+                    'background-color': 'rgba(86, 91, 96, 0.2)',
                     'border-radius': '50px',
                 }
             }

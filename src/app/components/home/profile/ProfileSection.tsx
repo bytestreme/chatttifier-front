@@ -9,21 +9,27 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
     profileSection: {
-        borderRight: '1px solid #e0e0e0',
+        borderRight: '1px solid #000',
     },
+    profileText: {
+        color: "#fff"
+    },
+    buttonsStyles: {
+        color: "rgb(220, 220, 220)"
+    }
 });
 
 export default function ProfileSection() {
     const classes = useStyles();
 
     return (
-        <Grid item className={classes.profileSection}>
+        <Grid item alignItems="center" className={classes.profileSection}>
             <List>
                 <ListItem>
                     <ListItemIcon>
                         <Avatar alt="John Doe" src="https://material-ui.com/static/images/avatar/1.jpg"/>
                     </ListItemIcon>
-                    <ListItemText primary="John Doe"/>
+                    <ListItemText className={classes.profileText} primary="John Doe"/>
                 </ListItem>
             </List>
         </Grid>

@@ -25,18 +25,23 @@ const useStyles = makeStyles({
         backgroundColor: '#e0e0e0'
     },
     borderRight500: {
-        borderRight: '1px solid #e0e0e0'
+        borderRight: '1px solid #000'
     },
     messageArea: {
         height: '85vh',
-        overflowY: 'auto'
+        overflowY: 'auto',
+        backgroundColor: '#0e1621'
     },
     headerAreaLeft: {
         height: "7vh",
-        borderRight: '1px solid #e0e0e0'
+        borderRight: '1px solid #000',
+        backgroundColor: "#17212b",
+        color: "rgb(220, 220, 220)",
+        paddingLeft: "15px"
     },
     headerAreaRight: {
-        height: "7vh"
+        height: "7vh",
+        backgroundColor: "#17212b"
     },
     input: {
         marginLeft: theme.spacing(1),
@@ -44,20 +49,13 @@ const useStyles = makeStyles({
     },
     messageInputArea: {
         height: "8vh",
-        borderTop: '1px solid #e0e0e0'
+        borderTop: '1px solid #000',
+        backgroundColor: "#17212b"
     },
     contactList: {
         overflowY: 'scroll',
         height: '75vh'
     },
-    profileSection: {
-        borderRight: '1px solid #e0e0e0',
-    },
-    searchSection: {
-        height: '8vh',
-        padding: '10px',
-        borderRight: '1px solid #e0e0e0',
-    }
 });
 
 export default function HomeContainer() {
@@ -79,7 +77,9 @@ export default function HomeContainer() {
                 </Grid>
             </Grid>
             <Grid container className={classes.bodySection}>
-                <Grid item xs={leftSideSize}>
+                <Grid item xs={leftSideSize} style={{
+                    backgroundColor: "#17212b"
+                }}>
                     <ProfileSection/>
                     <ContactSearchBox/>
                     <List className={classes.contactList}>
